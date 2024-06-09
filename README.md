@@ -55,16 +55,22 @@ src
 
 ## Features
 
-# Basic CRUD Operations for Shapes
+### Basic CRUD Operations for Shapes
 Create: Admin can create a shape based on name, color and shape. The post request will be sent to the backend if the fields are valid
 
-Read: Admin can view all the available shapes and details on the View.vue screen
+Read: The admin can view all the available shapes and details on the View.vue screen
 
-Update: Admin can update/edit the shape's name, color, or shape
+Update: The admin can update/edit the shape's name, color, or shape
 
 Delete: Admin can delete the specified shape
 
+### Input validation and error handling
+- field rules: the name cannot have numbers and cannot exceed 10 characters
+- using the selection field: admin can only choose the available colour/shape while adding/editing shape
+- The form for editing/adding a shape cannot be submitted if the requirements above are not met
 
+### Authentication
+- Simple token authentication are used for login/signup. No additional authentication features such as reset password, rememeber user, etc.
 
 
 
