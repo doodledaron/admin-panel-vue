@@ -67,6 +67,11 @@ Delete: Admin can delete the specified shape
 ### Authentication
 - Simple token authentication are used for login/signup. No additional authentication features such as reset password, rememeber user, etc.
 
+> [!TIP]
+> If theres problem signing up user, can temporarily use
+> username: cars, password: carstesting
+
+
 
 
 
