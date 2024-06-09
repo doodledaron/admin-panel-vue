@@ -5,7 +5,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 # Vite Vue Project - Shapy User panel
 
-This is a project built with Vite and Vue.js, an user panel the 
+This is a project built with Vite and Vue.js, an admin panel the 
 
 ## Table of Contents
 
