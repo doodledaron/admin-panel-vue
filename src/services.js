@@ -41,12 +41,12 @@ export default {
 
     //Delete a shape
     deleteShape(id){
-        return apiClient.delete(`delete/${id}`);
+        return apiClient.delete(`delete/${id}/`);
     },
 
     //edit a shape
     editShape(id, shapeChanges){
-        return apiClient.patch(`edit/${id}`, shapeChanges);
+        return apiClient.patch(`edit/${id}/`, shapeChanges);
     },
 
     //sign up user
