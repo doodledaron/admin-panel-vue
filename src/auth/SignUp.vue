@@ -32,9 +32,15 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, onBeforeMount } from 'vue';
+import { useAuthStore } from '../store/authStore';
 import service from '../services'
 
+const authStore = useAuthStore()
+
+onBeforeMount(()=>{
+    authStore.removeToken()
+})
 
 const event = ref({
     username: '',

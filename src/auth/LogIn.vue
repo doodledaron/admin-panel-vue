@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref, } from 'vue';
+import { ref,onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 import service from '../services'
 import { useAuthStore } from '../store/authStore.js'; // Import your 
@@ -45,6 +45,10 @@ const event = ref({
 
 
 const authStore = useAuthStore()
+
+onBeforeMount(()=>{
+    authStore.removeToken()
+})
 
 const handleLogIn = () => {
     console.log(authStore.token)

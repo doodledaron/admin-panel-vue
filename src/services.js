@@ -30,6 +30,10 @@ export default {
         return apiClient.get('/');
     },
 
+    fetchShahpeDataById(id){
+        return apiClient.get(`${id}/`);
+    },
+
     //Add a shape
     createShape(shape){
         return apiClient.post('create/', shape);
@@ -52,6 +56,8 @@ export default {
 
     //log user
     logInAdmin(formData){
+        const authStore = useAuthStore();
+        console.log('the token is' ,authStore.token)
         return apiClient.post('auth/token/login', formData);
     },
     

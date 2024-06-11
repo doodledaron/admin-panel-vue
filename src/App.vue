@@ -13,9 +13,12 @@ import axios from 'axios';
 import {onBeforeMount } from 'vue';
 const authStore = useAuthStore(); // Access the Pinia store
 
-onBeforeMount(() => {
-  authStore.initializeStore(); // Initialize the store
 
+onBeforeMount(() => {
+  
+  authStore.initializeStore(); // Initialize the store
+  
+  
   const token = authStore.token
 
   if (token) {

@@ -31,3 +31,4 @@ export function validateForm(event){
 export function extractFileName(path) {
     return path.split('/').pop();
 }
+

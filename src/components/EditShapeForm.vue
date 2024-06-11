@@ -19,7 +19,6 @@
 
 <script setup>
 import { ref, onMounted, defineProps } from 'vue';
-import axios from 'axios';
 import shapeService from '../services';
 import { validateForm } from '../utils';
 import cloneDeep from 'lodash/cloneDeep';
@@ -95,7 +94,7 @@ const handleConfirm = async () => {
 const fetchShapeDataById = async (id) => {
 	try {
 
-		const res = await axios.get(`http://127.0.0.1:8000/admin/${id}`);
+		const res = await shapeService.fetchShahpeDataById(id);
 		event.value = res.data;
 		//use clone deep to deep copy 
 		originalEvent.value = cloneDeep(res.data);
