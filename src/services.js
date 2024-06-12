@@ -4,7 +4,7 @@ import { useAuthStore } from './store/authStore.js';
 
 // Create an Axios instance
 const apiClient = axios.create({
-    baseURL: 'http://127.0.0.1:8000/admin/', 
+    baseURL: 'http://20.2.198.214:8000/admin/', 
     withCredentials: false, 
     headers: {
         'Accept': 'application/json',
