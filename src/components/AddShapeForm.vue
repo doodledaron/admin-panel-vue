@@ -71,6 +71,9 @@ const shapeRules = [
 const handleConfirm = async () => {
     //create shape only if all fields are filled
     if (validateForm(event)) {
+        console.log(
+            `Name: ${event.name}, Shape: ${event.shape}, Color: ${event.color}, event value : ${event.value}`
+        )
         try {
             const res = await shapeService.createShape(event.value)
             console.log(` Shape created successfulyy ${res.data}`)

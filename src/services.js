@@ -5,6 +5,7 @@ import { useAuthStore } from './store/authStore.js';
 // Create an Axios instance
 const apiClient = axios.create({
     baseURL: 'https://shapy-backend.onrender.com/admin/', 
+    // baseURL: 'http://127.0.0.1:8000/admin/', 
     withCredentials: false, 
     headers: {
         'Accept': 'application/json',
