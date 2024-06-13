@@ -61,6 +61,7 @@ const handleSignUp = () => {
             if (res.status === 201) {
                 console.log(res)
                 isSignUpSuccess.value = true
+                console.log(`User Signup Successfully : ${res.status}`)
             }
             // setTimeout(() => {
             //         emit('sign-up-success'); // Delayed emission
