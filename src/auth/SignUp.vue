@@ -62,9 +62,10 @@ const handleSignUp = () => {
                 console.log(res)
                 isSignUpSuccess.value = true
             }
-            setTimeout(() => {
-                    emit('sign-up-success'); // Delayed emission
-                }, 2000); 
+            // setTimeout(() => {
+            //         emit('sign-up-success'); // Delayed emission
+            //     }, 2000); 
+            emit('sign-up-success'); // Delayed emission
         }
     ).catch(
         err => {
