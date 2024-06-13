@@ -60,9 +60,6 @@ const handleSignUp = () => {
                 isSignUpSuccess.value = true
                 console.log(`User Signup Successfully : ${res.status}`)
             }
-            // setTimeout(() => {
-            //         emit('sign-up-success'); // Delayed emission
-            //     }, 2000); 
             emit('sign-up-success'); // Delayed emission
         }
     ).catch(

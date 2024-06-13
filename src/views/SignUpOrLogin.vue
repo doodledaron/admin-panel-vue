@@ -20,7 +20,7 @@
             <SignUp @loading="handleLoading" @sign-up-success="handleSignUp" @auth-error="handleAuthError" />
         </v-container>
         <v-container v-if="!isSignUp">
-            <LogIn @loading="handleLoading"/>
+            <LogIn @loading="handleLoading" @auth-error="handleAuthError"/>
         </v-container>
     </v-container>
 
