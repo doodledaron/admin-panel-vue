@@ -1,5 +1,7 @@
 <template>
     <v-toolbar color="black">
+        <v-progress-linear :active="loading" :indeterminate="loading" :height="10" color="grey" absolute
+            bottom></v-progress-linear>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
         <v-toolbar-title>Shapy Admin</v-toolbar-title>
@@ -13,10 +15,18 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
 import axios from 'axios';
 import services from '../services';
 import { useRouter } from 'vue-router';
 const router = useRouter()
+
+const props = defineProps({
+    loading: {
+        type: Boolean,
+        default: false
+    }
+})
 
 const handleLogOut = () => {
     try {

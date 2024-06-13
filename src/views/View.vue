@@ -1,5 +1,5 @@
 <template>
-    <NavigationBar />
+    <NavigationBar :loading="loading"/>
     <v-container v-if="showData">
 
         <SearchAndAddButtonRow @add-button-clicked="showDialog" />
@@ -51,6 +51,7 @@ const isEditShapeDialogVisible = ref(false);
 const isDeleteShapeDialogVisible = ref(false);
 const id = ref('');
 const showData = ref(true)
+const loading = ref(true)
 
 onMounted(() => {
     fetchShapeData();
@@ -60,6 +61,7 @@ onMounted(() => {
 
 
 const fetchShapeData = () => {
+    loading.value = true;
     shapeService.fetchShapeData().then(
         res => {
 
@@ -79,7 +81,12 @@ const fetchShapeData = () => {
     ).catch(err => {
         showData.value = false;
         console.log(err);
-    });
+    }).finally(
+        () => {
+            loading.value = false;
+        }
+    
+    );
 }
 
 

@@ -8,26 +8,21 @@
                     </v-card-title>
                     <v-card-text>
                         <v-form @submit.prevent>
-                            <v-text-field
-                                v-model="event.username"
-                                label="Username"
-                                required
-                            ></v-text-field>
-                            <v-text-field
-                                v-model="event.password"
-                                label="Password"
-                                required
-                                type="password"
-                            ></v-text-field>
+                            <v-text-field v-model="event.username" label="Username" required></v-text-field>
+                            <v-text-field v-model="event.password" label="Password" required
+                                type="password"></v-text-field>
                             <v-btn type="submit" @click="handleSignUp" color="primary">Sign Up</v-btn>
                         </v-form>
                     </v-card-text>
+                    <v-alert v-if="errorMessage" variant="tonal">
+                        {{ errorMessage }}
+                    </v-alert>
                 </v-card>
             </v-col>
         </v-row>
-        
-            <v-alert v-if="isSignUpSuccess" title="Sign Up Success" type="success">Sign up success</v-alert>
-        
+
+        <v-alert v-if="isSignUpSuccess" title="Sign Up Success" type="success">Sign up success</v-alert>
+
     </v-container>
 </template>
 
@@ -37,8 +32,8 @@ import { useAuthStore } from '../store/authStore';
 import service from '../services'
 
 const authStore = useAuthStore()
-
-onBeforeMount(()=>{
+const errorMessage = ref('')
+onBeforeMount(() => {
     authStore.removeToken()
 })
 
@@ -48,7 +43,7 @@ const event = ref({
 });
 
 const emit = defineEmits(
-    ['sign-up-success']
+    ['sign-up-success'], ['loading'], ['auth-error']
 )
 
 
@@ -56,6 +51,8 @@ const emit = defineEmits(
 const isSignUpSuccess = ref(false)
 
 const handleSignUp = () => {
+    errorMessage.value = ''
+    emit('loading')
     service.signUpAdmin(event.value).then(
         res => {
             if (res.status === 201) {
@@ -69,10 +66,21 @@ const handleSignUp = () => {
             emit('sign-up-success'); // Delayed emission
         }
     ).catch(
+        
         err => {
-            console.log(err)
-        }
+                if (err.response && err.response.data && err.response.data.non_field_errors) {
+                    errorMessage.value = err.response.data.non_field_errors[0] + ': Please check your username and password';
+                } else {
+                    errorMessage.value = 'The user already exists or check your credentials';
+                }
+                console.log(err);
+                emit('auth-error')
+            }
+            
     )
+
+
+
 }
 
 </script>
